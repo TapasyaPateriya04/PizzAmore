@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './header.css';
 
 export default function Header() {
   const [isDarkMode, setIsDarkMode] = useState(false);
