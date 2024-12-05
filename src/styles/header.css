@@ -1,0 +1,114 @@
+/* header.css */
+
+/* Header Styling */
+header {
+    background-color: #1a202c; /* Dark background */
+    color: #e2e8f0; /* Light text color */
+    padding: 1.5rem 2rem; /* Padding for top and bottom */
+    position: sticky;
+    top: 0;
+    z-index: 50; /* Ensures header stays on top */
+  }
+  
+  header .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f56565; /* Red color for logo */
+    text-transform: uppercase;
+  }
+  
+  header .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  header .nav-links a {
+    color: #e2e8f0; /* Light text color for links */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  header .nav-links a:hover {
+    color: #f56565; /* Red color on hover */
+  }
+  
+  /* Dropdown Menu Styling */
+  header .dropdown {
+    position: relative;
+  }
+  
+  header .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #2d3748; /* Dark background for dropdown */
+    top: 100%;
+    left: 0;
+    padding: 0.5rem 0;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+  }
+  
+  header .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  header .dropdown-menu a {
+    color: #e2e8f0; /* Light color for dropdown links */
+    padding: 0.5rem 1rem;
+    display: block;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  header .dropdown-menu a:hover {
+    background-color: #f56565; /* Red background on hover */
+  }
+  
+  /* Header button styling */
+  header .cta-button {
+    background-color: #f56565; /* Red background for button */
+    color: #fff; /* White text */
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  header .cta-button:hover {
+    background-color: #e53e3e; /* Darker red on hover */
+  }
+  
+  /* Mobile Menu */
+  @media screen and (max-width: 768px) {
+    header {
+      padding: 1rem;
+    }
+  
+    header .nav-links {
+      display: none; /* Hide the navigation links on mobile */
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    header .nav-links a {
+      font-size: 1.2rem;
+    }
+  
+    header .hamburger-menu {
+      display: block;
+      cursor: pointer;
+    }
+  
+    header .nav-links.open {
+      display: flex; /* Show navigation links when mobile menu is open */
+    }
+  }
+  
