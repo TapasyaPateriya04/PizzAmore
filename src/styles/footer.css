@@ -1,0 +1,68 @@
+/* footer.css */
+
+/* Basic Footer Styling */
+footer {
+    background-color: #1a202c; /* Dark background color for footer */
+    color: #e2e8f0; /* Light text color for dark theme */
+    padding: 3rem 0; /* Padding for top and bottom */
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  footer .footer-content a {
+    color: #e2e8f0; /* Light color for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  footer .footer-content a:hover {
+    color: #f56565; /* Red color on hover */
+  }
+  
+  /* Footer Social Icons */
+  footer .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  footer .social-icons a {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    color: #e2e8f0;
+    transition: color 0.3s ease;
+  }
+  
+  footer .social-icons a:hover {
+    color: #f56565; /* Red color for hover */
+  }
+  
+  /* Footer Bottom Text */
+  footer .footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: #cbd5e0; /* Slightly lighter text color */
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    footer {
+      padding: 2rem 0;
+    }
+  
+    footer .footer-content {
+      padding: 0 1rem;
+    }
+  
+    footer .social-icons a {
+      margin: 0 0.5rem;
+    }
+  }
+  
