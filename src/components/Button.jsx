@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import './button.css';
+import '../styles/button.css';
+
 // Button Component with customizable text, styles, and click action
 // eslint-disable-next-line react/prop-types
 const Button = ({ text, onClick, type = 'primary', size = 'medium' }) => {

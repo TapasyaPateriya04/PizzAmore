@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import './footer.css';
+import "../styles/footer.css";
+
 const Footer = () => {
   return (
     <footer className="bg-gray-800 dark:bg-gray-900 text-white py-8">

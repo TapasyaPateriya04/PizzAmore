@@ -1,4 +1,4 @@
-// AboutPage.jsx
+// src/pages/AboutPage.jsx
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
@@ -13,7 +13,7 @@ const AboutPage = () => {
           {/* Image Section */}
           <div className="lg:w-1/2 mb-8 lg:mb-0">
             <img
-              src="https://via.placeholder.com/500"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCB2Y7a1qR-1PjW_AdCAG3lsjfMgQFYsxQPQ&s"
               alt="About PizzAmore"
               className="w-full rounded-lg shadow-lg"
             />
@@ -25,13 +25,11 @@ const AboutPage = () => {
               Our Story
             </h2>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              At PizzAmore, we believe in the power of delicious, fresh, and healthy vegetarian pizzas.
-              Our mission is to offer pizza lovers a high-quality, plant-based pizza experience with every bite.
+              At PizzAmore, we believe in the power of delicious, fresh, and healthy vegetarian pizzas. Our mission is to offer pizza lovers a high-quality, plant-based pizza experience with every bite.
               All our pizzas are made from the finest ingredients, ensuring they are both tasty and healthy.
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              Whether you are enjoying a classic Margherita or trying one of our exclusive chef specials, we promise you
-              a mouthwatering experience. Join us in our journey to bring the love of vegetarian pizzas to the world!
+              Whether you are enjoying a classic Margherita or trying one of our exclusive chef specials, we promise you a mouthwatering experience. Join us in our journey to bring the love of vegetarian pizzas to the world!
             </p>
 
             {/* Call to Action */}
