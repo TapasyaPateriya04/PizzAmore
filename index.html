@@ -1,13 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PizzAmore | Pizza Heaven</title>
+  <link rel="icon" href="/logo.png" type="image/png">
+  <link rel="stylesheet" href="/src/styles/global.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8a1b33', 
+            secondary: '#333333', // Dark theme background
+            accent: '#681709' // Tomato accent
+          },
+        },
+        darkMode: 'class',
+      },
+    }
+  </script>
+</head>
+
+<body class="bg-secondary text-white font-sans antialiased">
+  <!-- Main Wrapper -->
+  <div class="min-h-screen flex flex-col bg-secondary">
+    <!-- Navbar or Header Section (optional) -->
+    <header class="bg-primary text-white py-4 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-3xl font-semibold">PizzAmore</a>
+        <nav>
+          <ul class="flex space-x-6">
+            <li><a href="/" class="hover:text-accent">Home</a></li>
+            <li><a href="/menu" class="hover:text-accent">Menu</a></li>
+            <li><a href="/about" class="hover:text-accent">About Us</a></li>
+            <li><a href="/contact" class="hover:text-accent">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <div id="root"></div> <!-- React App will be rendered here -->
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-primary text-white py-6">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2024 PizzAmore. All Rights Reserved.</p>
+        <p class="text-sm">Freshly baked pizzas delivered to your door with love! <br> Designed with pizza lovers in mind!</p>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/App.jsx"></script>
+</body>
+
 </html>
