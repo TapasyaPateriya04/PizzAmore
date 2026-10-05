@@ -5,6 +5,7 @@ import { crusts, pizzas, sizes, toppings } from '../data/pizzas';
 import { useCart } from '../context/CartContext';
 import usePageMeta from '../hooks/usePageMeta';
 import PizzaCard from '../components/PizzaCard';
+import Reveal from '../components/Reveal';
 import { formatCurrency, getOrderStatus, getUnitPrice } from '../utils/order';
 import heroPizza from '../assets/background.jpg';
 import pizzaFallback from '../assets/pizza2.jpg';
@@ -13,11 +14,11 @@ const shortDate = (date) => new Date(date).toLocaleDateString('en-IN', { day: 'n
 const dateTime = (date) => new Date(date).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
 
 function SectionHeading({ eyebrow, title, copy }) {
-  return <div className="section-heading"><span className="eyebrow">{eyebrow}</span><h2>{title}</h2>{copy && <p>{copy}</p>}</div>;
+  return <Reveal className="section-heading"><span className="eyebrow">{eyebrow}</span><h2>{title}</h2>{copy && <p>{copy}</p>}</Reveal>;
 }
 
 function PageIntro({ eyebrow, title, copy }) {
-  return <section className="page-intro"><span className="eyebrow">{eyebrow}</span><h1>{title}</h1>{copy && <p>{copy}</p>}</section>;
+  return <Reveal as="section" className="page-intro"><span className="eyebrow">{eyebrow}</span><h1>{title}</h1>{copy && <p>{copy}</p>}</Reveal>;
 }
 
 function Totals({ totals, couponCode }) {
@@ -64,7 +65,7 @@ function CouponBox({ items, couponCode, applyCoupon, removeCoupon }) {
 
 function OrderSummary({ items, totals, couponCode, actions, children }) {
   return (
-    <aside className="summary-card">
+    <Reveal as="aside" className="summary-card">
       <h2>Your order</h2>
       {items.length > 0 && <div className="summary-items">{items.map((item, index) => (
         <div className="summary-item" key={item.cartId || `${item.pizzaId}-${index}`}><span>{item.quantity} × {item.name}<small>{item.size} · {item.crust}</small></span><strong>{formatCurrency(getUnitPrice(item) * item.quantity)}</strong></div>
@@ -73,7 +74,7 @@ function OrderSummary({ items, totals, couponCode, actions, children }) {
       <Totals totals={totals} couponCode={couponCode} />
       {actions}
       <p className="summary-footnote">Freshly baked just for you <span aria-hidden="true">♥</span></p>
-    </aside>
+    </Reveal>
   );
 }
 
@@ -84,43 +85,43 @@ export function HomePage() {
     <>
       <section className="hero" style={{ '--hero-image': `url("${heroPizza}")` }}>
         <div className="hero-scrim"></div>
-        <div className="hero-content">
+        <Reveal className="hero-content" distance={12}>
           <span className="hero-kicker"><span aria-hidden="true">✦</span> YOUR NEW FAVOURITE IS HERE</span>
           <h1>A little more<br /><em>amore</em> in every bite.</h1>
           <p>Hand-stretched, generously topped, 100% vegetarian. Your kind of pizza night starts here.</p>
           <div className="hero-buttons"><Link className="button button-primary button-large" to="/menu">Order now <span aria-hidden="true">→</span></Link><Link className="hero-secondary" to="/about">The PizzAmore story <span aria-hidden="true">↗</span></Link></div>
           <div className="hero-note"><span className="hero-note-icon">V</span><span><strong>Always vegetarian</strong><small>Never an afterthought.</small></span></div>
-        </div>
+        </Reveal>
         <div className="hero-caption"><span>THE GARDEN MARGHERITA</span><span>MADE FRESH, JUST FOR YOU</span></div>
       </section>
 
-      <section className="benefits-strip" aria-label="Why order from PizzAmore">
+      <Reveal as="section" className="benefits-strip" aria-label="Why order from PizzAmore">
         <div><span className="benefit-icon">✳</span><span><strong>Good ingredients</strong><small>Fresh, never fussy</small></span></div>
         <div><span className="benefit-icon">⌁</span><span><strong>Made to order</strong><small>Hot from our oven</small></span></div>
         <div><span className="benefit-icon">♡</span><span><strong>100% vegetarian</strong><small>More joy, no compromise</small></span></div>
         <div><span className="benefit-icon">↗</span><span><strong>At your doorstep</strong><small>Free delivery over ₹499</small></span></div>
-      </section>
+      </Reveal>
 
-      <nav className="home-category-nav" aria-label="Shop pizza categories">
+      <Reveal as="nav" className="home-category-nav" aria-label="Shop pizza categories">
         <span className="eyebrow">WHAT ARE YOU IN THE MOOD FOR?</span>
         {['Classics', 'Premium', 'Veggie', 'Spicy', 'Cheese lovers'].map((category) => <Link key={category} to={`/menu?category=${encodeURIComponent(category)}`}>{category}<span aria-hidden="true">↗</span></Link>)}
-      </nav>
+      </Reveal>
 
       <section className="content-section featured-section">
         <SectionHeading eyebrow="THE CROWD PLEASERS" title="A very good place to start." copy="Fresh from our oven and straight to your favourites list." />
-        <div className="pizza-grid">{featured.map((pizza) => <PizzaCard key={pizza.id} pizza={pizza} />)}</div>
-        <div className="center-action"><Link className="button button-outline" to="/menu">Explore the full menu <span aria-hidden="true">→</span></Link></div>
+        <div className="pizza-grid">{featured.map((pizza, index) => <PizzaCard key={pizza.id} pizza={pizza} index={index} />)}</div>
+        <Reveal className="center-action"><Link className="button button-outline" to="/menu">Explore the full menu <span aria-hidden="true">→</span></Link></Reveal>
       </section>
 
-      <section className="home-promo">
+      <Reveal as="section" className="home-promo">
         <div><span className="eyebrow">A LITTLE SOMETHING EXTRA</span><h2>First slice is on us.<br /><em>Well, almost.</em></h2><p>Take 10% off your first order with <strong>FIRSTORDER</strong>. Just add a little amore to your cart.</p><Link to="/offers" className="button button-light">See this week’s offers <span aria-hidden="true">→</span></Link></div>
         <div className="promo-stamp"><span>10%</span><small>OFF YOUR<br />FIRST ORDER</small></div>
-      </section>
+      </Reveal>
 
-      <section className="content-section home-story">
+      <Reveal as="section" className="content-section home-story">
         <div className="story-art"><img src={pizzaFallback} alt="Freshly baked vegetarian pizza topped with vegetables and cheese" loading="lazy" /><span className="story-stamp">100%<br />VEGGIE</span></div>
         <div className="story-copy"><span className="eyebrow">A BETTER KIND OF PIZZA NIGHT</span><h2>Big flavour.<br /><em>Good feeling.</em></h2><p>We believe the best pizza starts with the good stuff. Real vegetables, lovely cheese and dough that gets the time it deserves. Every single one is vegetarian, so everyone gets a seat at the table.</p><Link className="text-link" to="/about">A little more about us <span aria-hidden="true">→</span></Link></div>
-      </section>
+      </Reveal>
     </>
   );
 }
@@ -156,7 +157,7 @@ export function MenuPage() {
         <label className="sort-control">Sort by <select value={sort} onChange={(event) => setSort(event.target.value)}><option value="featured">Our favourites</option><option value="rating">Top rated</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></label>
       </div>
       {query && <div className="search-result-note">Showing results for <strong>“{query}”</strong><button type="button" className="text-button" onClick={() => setSearchParams({})}>Clear search</button></div>}
-      {shown.length ? <div className="pizza-grid">{shown.map((pizza) => <PizzaCard key={pizza.id} pizza={pizza} />)}</div> : <div className="empty-state"><span className="empty-icon">⌕</span><h2>No pizzas found just yet.</h2><p>Try searching for cheese, paneer, or veggie — or clear your filters to see everything.</p><button type="button" className="button button-outline" onClick={() => { setCategory('All pizzas'); setSearchParams({}); }}>Show all pizzas</button></div>}
+      {shown.length ? <div className="pizza-grid">{shown.map((pizza, index) => <PizzaCard key={pizza.id} pizza={pizza} index={index} />)}</div> : <div className="empty-state"><span className="empty-icon">⌕</span><h2>No pizzas found just yet.</h2><p>Try searching for cheese, paneer, or veggie — or clear your filters to see everything.</p><button type="button" className="button button-outline" onClick={() => { setCategory('All pizzas'); setSearchParams({}); }}>Show all pizzas</button></div>}
     </div>
   );
 }
@@ -192,8 +193,8 @@ export function PizzaPage() {
     <div className="content-section product-page">
       <Link to="/menu" className="back-link">← Back to the menu</Link>
       <div className="product-layout">
-        <div className="product-photo"><img src={pizza.image} alt={`${pizza.name} pizza`} onError={(event) => { event.currentTarget.src = pizzaFallback; }} /><span className="veg-mark product-veg" aria-label="100% vegetarian">V</span></div>
-        <div className="product-config">
+        <Reveal className="product-photo"><img src={pizza.image} alt={`${pizza.name} pizza`} onError={(event) => { event.currentTarget.src = pizzaFallback; }} /><span className="veg-mark product-veg" aria-label="100% vegetarian">V</span></Reveal>
+        <Reveal className="product-config" delay={0.08}>
           <span className="eyebrow">{pizza.category.toUpperCase()} · 100% VEGETARIAN</span>
           <h1>{pizza.name}</h1>
           <div className="product-rating"><span>★ {pizza.rating}</span><span>({pizza.reviews} lovely reviews)</span></div>
@@ -205,7 +206,7 @@ export function PizzaPage() {
           <label className="field-label instructions-label" htmlFor="pizza-instructions">A note for our pizzaiolo <span>Optional</span></label><textarea id="pizza-instructions" rows="2" maxLength="160" value={instructions} onChange={(event) => setInstructions(event.target.value)} placeholder="Anything we should know? e.g. extra crispy, please." />
           <div className="add-to-bucket-row"><div className="quantity-control"><button type="button" aria-label="Decrease quantity" disabled={quantity <= 1} onClick={() => setQuantity(Math.max(1, quantity - 1))}>−</button><span aria-live="polite">{quantity}</span><button type="button" aria-label="Increase quantity" disabled={quantity >= 20} onClick={() => setQuantity(Math.min(20, quantity + 1))}>＋</button></div><button type="button" className="button button-primary button-large add-product-button" onClick={submit}>{existing ? 'Save changes' : 'Add to bucket'} <strong>{formatCurrency(price * quantity)}</strong></button></div>
           <p className="product-tax-note">Made fresh to order · Taxes calculated in your bucket</p>
-        </div>
+        </Reveal>
       </div>
     </div>
   );
@@ -220,11 +221,11 @@ export function CartPage() {
       <PageIntro eyebrow="ALMOST THE BEST PART" title="Your bucket" copy={`${items.reduce((sum, item) => sum + item.quantity, 0)} delicious ${items.reduce((sum, item) => sum + item.quantity, 0) === 1 ? 'pizza' : 'pizzas'}, made your way.`} />
       <div className="cart-layout">
         <div className="cart-items">
-          {items.map((item) => <article className="cart-item" key={item.cartId}>
+          {items.map((item, index) => <Reveal as="article" className="cart-item" key={item.cartId} delay={(index % 4) * 0.05}>
             <img src={item.image} alt={item.name} onError={(event) => { event.currentTarget.src = pizzaFallback; }} />
             <div className="cart-item-info"><h2>{item.name}</h2><p>{item.size} · {item.crust}{item.toppings.length ? ` · ${item.toppings.join(', ')}` : ''}</p>{item.instructions && <small className="item-note">Note: {item.instructions}</small>}<div className="cart-item-actions"><div className="quantity-control compact"><button type="button" aria-label={`Decrease ${item.name} quantity`} onClick={() => updateQuantity(item.cartId, item.quantity - 1)}>−</button><span>{item.quantity}</span><button type="button" aria-label={`Increase ${item.name} quantity`} disabled={item.quantity >= 20} onClick={() => updateQuantity(item.cartId, item.quantity + 1)}>＋</button></div><Link className="text-button" to={`/pizza/${item.pizzaId}?edit=${item.cartId}`}>Edit</Link><button type="button" className="text-button remove-button" onClick={() => removeItem(item.cartId)}>Remove</button></div></div>
             <strong className="cart-item-price">{formatCurrency(getUnitPrice(item) * item.quantity)}</strong>
-          </article>)}
+          </Reveal>)}
           <div className="cart-bottom-links"><Link className="text-link" to="/menu">← Keep browsing</Link><button type="button" className="text-button" onClick={clearCart}>Clear bucket</button></div>
           <div className="delivery-nudge">{totals.delivery === 0 ? <><span>✦</span> Your delivery is on us. Lovely choice!</> : <>You’re {formatCurrency(499 - totals.subtotal)} away from free delivery.</>}</div>
         </div>
@@ -285,9 +286,9 @@ export function CheckoutPage() {
       <PageIntro eyebrow="ONE LAST THING" title="Delivery details" copy="We’ll get your pizza there hot, happy, and right on time." />
       <form className="checkout-layout" onSubmit={submit} noValidate>
         <div className="checkout-fields">
-          <section className="form-section"><div className="form-section-heading"><span className="step-number">01</span><div><h2>Who’s hungry?</h2><p>We’ll use these details for your order updates.</p></div></div><div className="form-grid">{textField('name', 'Full name', { autoComplete: 'name' })}{textField('email', 'Email address', { type: 'email', autoComplete: 'email' })}{textField('phone', 'Mobile number', { type: 'tel', autoComplete: 'tel', maxLength: 10 })}</div></section>
-          <section className="form-section"><div className="form-section-heading"><span className="step-number">02</span><div><h2>Where should we meet you?</h2><p>We deliver with care. Tell us where to find you.</p></div></div><div className="form-grid">{textField('house', 'House / flat no.', { autoComplete: 'address-line1' })}{textField('street', 'Street / area', { autoComplete: 'address-line2' })}{textField('city', 'City', { autoComplete: 'address-level2' })}{textField('state', 'State', { autoComplete: 'address-level1' })}{textField('pincode', 'Pincode', { autoComplete: 'postal-code', maxLength: 6 })}{textField('landmark', 'Landmark', { optional: true })}<div className="form-field field-wide"><label htmlFor="instructions">Delivery instructions <span>Optional</span></label><textarea id="instructions" name="instructions" rows="2" value={customer.instructions} onChange={change} placeholder="Gate code, leave at the door, and so on." /></div></div></section>
-          <section className="form-section"><div className="form-section-heading"><span className="step-number">03</span><div><h2>How would you like to pay?</h2><p>Simple, safe, and no surprises.</p></div></div><label className="payment-choice"><input type="radio" name="payment" value="Cash on delivery" checked={paymentMethod === 'Cash on delivery'} onChange={(event) => setPaymentMethod(event.target.value)} /><span className="payment-icon">₹</span><span><strong>Cash on delivery</strong><small>Pay when your pizza arrives</small></span><span className="payment-check" aria-hidden="true">✓</span></label></section>
+          <Reveal as="section" className="form-section"><div className="form-section-heading"><span className="step-number">01</span><div><h2>Who’s hungry?</h2><p>We’ll use these details for your order updates.</p></div></div><div className="form-grid">{textField('name', 'Full name', { autoComplete: 'name' })}{textField('email', 'Email address', { type: 'email', autoComplete: 'email' })}{textField('phone', 'Mobile number', { type: 'tel', autoComplete: 'tel', maxLength: 10 })}</div></Reveal>
+          <Reveal as="section" className="form-section" delay={0.06}><div className="form-section-heading"><span className="step-number">02</span><div><h2>Where should we meet you?</h2><p>We deliver with care. Tell us where to find you.</p></div></div><div className="form-grid">{textField('house', 'House / flat no.', { autoComplete: 'address-line1' })}{textField('street', 'Street / area', { autoComplete: 'address-line2' })}{textField('city', 'City', { autoComplete: 'address-level2' })}{textField('state', 'State', { autoComplete: 'address-level1' })}{textField('pincode', 'Pincode', { autoComplete: 'postal-code', maxLength: 6 })}{textField('landmark', 'Landmark', { optional: true })}<div className="form-field field-wide"><label htmlFor="instructions">Delivery instructions <span>Optional</span></label><textarea id="instructions" name="instructions" rows="2" value={customer.instructions} onChange={change} placeholder="Gate code, leave at the door, and so on." /></div></div></Reveal>
+          <Reveal as="section" className="form-section" delay={0.12}><div className="form-section-heading"><span className="step-number">03</span><div><h2>How would you like to pay?</h2><p>Simple, safe, and no surprises.</p></div></div><label className="payment-choice"><input type="radio" name="payment" value="Cash on delivery" checked={paymentMethod === 'Cash on delivery'} onChange={(event) => setPaymentMethod(event.target.value)} /><span className="payment-icon">₹</span><span><strong>Cash on delivery</strong><small>Pay when your pizza arrives</small></span><span className="payment-check" aria-hidden="true">✓</span></label></Reveal>
         </div>
         <OrderSummary items={items} totals={totals} couponCode={couponCode}><CouponBox items={items} couponCode={couponCode} applyCoupon={applyCoupon} removeCoupon={removeCoupon} />{orderError && <p className="order-error" role="alert">{orderError}</p>}<button className="button button-primary button-block" type="submit" disabled={submitting}>{submitting ? <><span className="button-spinner"></span> Placing your order…</> : <>Place order · {formatCurrency(totals.total)} <span aria-hidden="true">→</span></>}</button><p className="checkout-terms">By placing your order, you agree to our <Link to="/terms">terms</Link> and <Link to="/privacy">privacy policy</Link>.</p></OrderSummary>
       </form>
@@ -310,7 +311,7 @@ function OrderTimeline({ order }) {
 function OrderCard({ order, showActions = true }) {
   const { reorder } = useCart();
   const step = getOrderStatus(order);
-  return <article className="order-card"><div className="order-card-top"><div><span className="eyebrow">ORDER {order.id}</span><p>{shortDate(order.createdAt)} · {order.items.reduce((sum, item) => sum + item.quantity, 0)} items</p></div><span className={`status-pill status-${step}`}>{statusLabels[step]}</span></div><div className="order-card-pizzas">{order.items.map((item) => <span key={`${item.pizzaId}-${item.size}-${item.crust}`}>{item.quantity} × {item.name}</span>)}</div><div className="order-card-bottom"><strong>{formatCurrency(order.summary.total)}</strong>{showActions && <div><button type="button" className="button button-small button-outline" onClick={() => reorder(order)}>Reorder</button><Link className="text-link" to={`/orders/${order.id}`}>View order →</Link></div>}</div></article>;
+  return <Reveal as="article" className="order-card"><div className="order-card-top"><div><span className="eyebrow">ORDER {order.id}</span><p>{shortDate(order.createdAt)} · {order.items.reduce((sum, item) => sum + item.quantity, 0)} items</p></div><span className={`status-pill status-${step}`}>{statusLabels[step]}</span></div><div className="order-card-pizzas">{order.items.map((item) => <span key={`${item.pizzaId}-${item.size}-${item.crust}`}>{item.quantity} × {item.name}</span>)}</div><div className="order-card-bottom"><strong>{formatCurrency(order.summary.total)}</strong>{showActions && <div><button type="button" className="button button-small button-outline" onClick={() => reorder(order)}>Reorder</button><Link className="text-link" to={`/orders/${order.id}`}>View order →</Link></div>}</div></Reveal>;
 }
 
 export function OrderConfirmationPage() {
@@ -320,14 +321,14 @@ export function OrderConfirmationPage() {
   usePageMeta(order ? `Order ${order.id} | PizzAmore` : 'Order not found | PizzAmore', 'Your PizzAmore order confirmation and live delivery progress.');
   if (!order) return <div className="content-section"><div className="empty-state"><span className="empty-icon">⌕</span><h1>We couldn’t find that order.</h1><p>Orders are saved in the browser where you placed them.</p><Link to="/orders" className="button button-primary">View order history</Link></div></div>;
   return (
-    <div className="content-section confirmation-page">
+    <Reveal as="div" className="content-section confirmation-page">
       <div className="confirmation-heading"><span className="confirmation-check">✓</span><span className="eyebrow">THAT’S A VERY GOOD CHOICE</span><h1>Order placed, {order.customer.name.split(' ')[0]}!</h1><p>Your pizza is in good hands. We’ll see you soon.</p></div>
       <div className="confirmation-grid">
-        <section className="confirmation-card tracking-card"><div className="order-card-top"><div><span className="eyebrow">ORDER {order.id}</span><p>Placed {dateTime(order.createdAt)}</p></div><span className={`status-pill status-${getOrderStatus(order)}`}>{statusLabels[getOrderStatus(order)]}</span></div><div className="estimated-arrival"><span>ESTIMATED ARRIVAL</span><strong>{new Date(order.estimatedDelivery).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' })}</strong><small>About 45 minutes after ordering</small></div><OrderTimeline order={order} /></section>
-        <section className="confirmation-card"><h2>Order details</h2><div className="summary-items">{order.items.map((item, index) => <div className="summary-item" key={`${item.pizzaId}-${index}`}><span>{item.quantity} × {item.name}<small>{item.size} · {item.crust}{item.toppings.length ? ` · ${item.toppings.join(', ')}` : ''}</small></span><strong>{formatCurrency(getUnitPrice(item) * item.quantity)}</strong></div>)}</div><Totals totals={order.summary} couponCode={order.couponCode} /><div className="address-summary"><strong>Delivering to</strong><p>{order.customer.name}<br />{order.customer.house}, {order.customer.street}<br />{order.customer.city}, {order.customer.state} {order.customer.pincode}{order.customer.landmark ? <><br />Near {order.customer.landmark}</> : null}</p>{order.customer.instructions && <small>Note: {order.customer.instructions}</small>}</div><div className="payment-summary"><strong>Payment</strong><span>{order.paymentMethod}</span></div></section>
+        <Reveal as="section" className="confirmation-card tracking-card"><div className="order-card-top"><div><span className="eyebrow">ORDER {order.id}</span><p>Placed {dateTime(order.createdAt)}</p></div><span className={`status-pill status-${getOrderStatus(order)}`}>{statusLabels[getOrderStatus(order)]}</span></div><div className="estimated-arrival"><span>ESTIMATED ARRIVAL</span><strong>{new Date(order.estimatedDelivery).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' })}</strong><small>About 45 minutes after ordering</small></div><OrderTimeline order={order} /></Reveal>
+        <Reveal as="section" className="confirmation-card" delay={0.08}><h2>Order details</h2><div className="summary-items">{order.items.map((item, index) => <div className="summary-item" key={`${item.pizzaId}-${index}`}><span>{item.quantity} × {item.name}<small>{item.size} · {item.crust}{item.toppings.length ? ` · ${item.toppings.join(', ')}` : ''}</small></span><strong>{formatCurrency(getUnitPrice(item) * item.quantity)}</strong></div>)}</div><Totals totals={order.summary} couponCode={order.couponCode} /><div className="address-summary"><strong>Delivering to</strong><p>{order.customer.name}<br />{order.customer.house}, {order.customer.street}<br />{order.customer.city}, {order.customer.state} {order.customer.pincode}{order.customer.landmark ? <><br />Near {order.customer.landmark}</> : null}</p>{order.customer.instructions && <small>Note: {order.customer.instructions}</small>}</div><div className="payment-summary"><strong>Payment</strong><span>{order.paymentMethod}</span></div></Reveal>
       </div>
       <div className="center-action"><Link to="/orders" className="button button-outline">Go to order history</Link><Link to="/menu" className="text-link">Order something else →</Link></div>
-    </div>
+    </Reveal>
   );
 }
 
@@ -365,12 +366,12 @@ export function OffersPage() {
       setCopied(`manual-${code}`);
     }
   };
-  return <div className="content-section offers-page"><PageIntro eyebrow="A LITTLE EXTRA AMORE" title="Good things come in pizza boxes." copy="Something lovely for your next order. Add a code in your bucket to use it." /><div className="offers-grid">{offers.map((offer) => <article className={`offer-card offer-${offer.tint}`} key={offer.code}><span className="offer-sparkle" aria-hidden="true">✳</span><span className="eyebrow">A PIZZAMORE TREAT</span><h2>{offer.title}</h2><p>{offer.copy}</p><small>{offer.detail}</small><div className="offer-code-row"><code>{offer.code}</code><button type="button" className="text-button" onClick={() => copyCode(offer.code)}>{copied === offer.code ? 'Copied ✓' : copied === `manual-${offer.code}` ? 'Select code' : 'Copy code'}</button></div></article>)}</div><div className="center-action"><Link className="button button-primary" to="/menu">Find your pizza <span aria-hidden="true">→</span></Link></div></div>;
+  return <div className="content-section offers-page"><PageIntro eyebrow="A LITTLE EXTRA AMORE" title="Good things come in pizza boxes." copy="Something lovely for your next order. Add a code in your bucket to use it." /><div className="offers-grid">{offers.map((offer, index) => <Reveal as="article" className={`offer-card offer-${offer.tint}`} key={offer.code} delay={(index % 3) * 0.06}><span className="offer-sparkle" aria-hidden="true">✳</span><span className="eyebrow">A PIZZAMORE TREAT</span><h2>{offer.title}</h2><p>{offer.copy}</p><small>{offer.detail}</small><div className="offer-code-row"><code>{offer.code}</code><button type="button" className="text-button" onClick={() => copyCode(offer.code)}>{copied === offer.code ? 'Copied ✓' : copied === `manual-${offer.code}` ? 'Select code' : 'Copy code'}</button></div></Reveal>)}</div><Reveal className="center-action"><Link className="button button-primary" to="/menu">Find your pizza <span aria-hidden="true">→</span></Link></Reveal></div>;
 }
 
 export function AboutPage() {
   usePageMeta('Our story | About PizzAmore', 'Meet PizzAmore: a little more care, a lot more flavour, and vegetarian pizza for everyone.');
-  return <div className="about-page"><PageIntro eyebrow="A LITTLE ABOUT US" title={<>Pizza made with<br /><em>a little more heart.</em></>} copy="We’re here for the shared slices, the extra napkins and the “just one more bite” moments." /><section className="about-feature content-section"><div className="about-image"><img src={heroPizza} alt="A freshly baked pizza with colourful vegetarian toppings" /><span>GOOD FOOD<br />BRINGS US<br />TOGETHER.</span></div><div><span className="eyebrow">OUR KIND OF PIZZA</span><h2>Vegetarian by choice.<br /><em>Delicious by nature.</em></h2><p>PizzAmore started with a simple thought: a great pizza night should feel good for everyone around the table. So we put vegetables right at the heart of it — never as an afterthought.</p><p>We make each pizza to order, layer on ingredients we love, and let our dough take the time it needs. No shortcuts. Just thoughtful food and the kind of flavour that makes you reach for another slice.</p><Link className="button button-primary" to="/menu">Meet the menu <span aria-hidden="true">→</span></Link></div></section><section className="about-values"><SectionHeading eyebrow="THE PIZZAMORE PROMISE" title="A few things we’ll never compromise on." /><div className="value-grid"><article><span>01</span><h3>Always veggie</h3><p>Every pizza is thoughtfully made with vegetarian ingredients. More people at the table, more to love.</p></article><article><span>02</span><h3>Fresh, every time</h3><p>We make each order fresh, using produce and ingredients chosen for flavour first.</p></article><article><span>03</span><h3>Made with care</h3><p>From a properly rested dough to the final drizzle, the little things make a big difference.</p></article></div></section><section className="about-cta"><h2>Let’s make tonight a pizza night.</h2><Link className="button button-light" to="/menu">Order a little amore <span aria-hidden="true">→</span></Link></section></div>;
+  return <div className="about-page"><PageIntro eyebrow="A LITTLE ABOUT US" title={<>Pizza made with<br /><em>a little more heart.</em></>} copy="We’re here for the shared slices, the extra napkins and the “just one more bite” moments." /><Reveal as="section" className="about-feature content-section"><div className="about-image"><img src={heroPizza} alt="A freshly baked pizza with colourful vegetarian toppings" /><span>GOOD FOOD<br />BRINGS US<br />TOGETHER.</span></div><div><span className="eyebrow">OUR KIND OF PIZZA</span><h2>Vegetarian by choice.<br /><em>Delicious by nature.</em></h2><p>PizzAmore started with a simple thought: a great pizza night should feel good for everyone around the table. So we put vegetables right at the heart of it — never as an afterthought.</p><p>We make each pizza to order, layer on ingredients we love, and let our dough take the time it needs. No shortcuts. Just thoughtful food and the kind of flavour that makes you reach for another slice.</p><Link className="button button-primary" to="/menu">Meet the menu <span aria-hidden="true">→</span></Link></div></Reveal><Reveal as="section" className="about-values"><SectionHeading eyebrow="THE PIZZAMORE PROMISE" title="A few things we’ll never compromise on." /><div className="value-grid"><article><span>01</span><h3>Always veggie</h3><p>Every pizza is thoughtfully made with vegetarian ingredients. More people at the table, more to love.</p></article><article><span>02</span><h3>Fresh, every time</h3><p>We make each order fresh, using produce and ingredients chosen for flavour first.</p></article><article><span>03</span><h3>Made with care</h3><p>From a properly rested dough to the final drizzle, the little things make a big difference.</p></article></div></Reveal><Reveal as="section" className="about-cta"><h2>Let’s make tonight a pizza night.</h2><Link className="button button-light" to="/menu">Order a little amore <span aria-hidden="true">→</span></Link></Reveal></div>;
 }
 
 export function ContactPage() {

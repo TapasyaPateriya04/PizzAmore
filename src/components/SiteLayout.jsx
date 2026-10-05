@@ -26,7 +26,7 @@ export default function SiteLayout() {
   return (
     <div className="site-shell">
       <a className="skip-link" href="#main-content">Skip to content</a>
-      <div className="announcement"><span>✦</span> A little more amore, in every bite <span className="announcement-dot">·</span> Free delivery over ₹499</div>
+      <div className="announcement"><span>✦</span> A little more amore <span className="announcement-dot">·</span> Free delivery over ₹499</div>
       <header className="site-header">
         <div className="header-inner">
           <Link to="/" className="brand" aria-label="PizzAmore home" onClick={closeMenu}>
