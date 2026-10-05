@@ -2,12 +2,13 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { formatCurrency } from '../utils/order';
+import Reveal from './Reveal';
 import fallbackPizza from '../assets/pizza1.jpg';
 
-export default function PizzaCard({ pizza }) {
+export default function PizzaCard({ pizza, index = 0 }) {
   const { addItem } = useCart();
   return (
-    <article className="pizza-card">
+    <Reveal as="article" className="pizza-card" delay={(index % 3) * 0.07} whileHover={{ y: -4 }}>
       <Link className="pizza-card-image" to={`/pizza/${pizza.id}`} aria-label={`View ${pizza.name}`}>
         <img src={pizza.image} alt={`${pizza.name} vegetarian pizza`} loading="lazy" onError={(event) => { event.currentTarget.src = fallbackPizza; }} />
         <span className="veg-mark" title="Vegetarian" aria-label="100% vegetarian">V</span>
@@ -25,6 +26,6 @@ export default function PizzaCard({ pizza }) {
           })}>Quick add <span aria-hidden="true">＋</span></button>
         </div>
       </div>
-    </article>
+    </Reveal>
   );
 }

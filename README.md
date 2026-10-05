@@ -10,6 +10,7 @@ npm run dev
 ```
 
 Run `npm run build` to create the production bundle and `npm run lint` to run ESLint.
+Scroll reveals use Motion and respect the operating system's reduced-motion preference.
 
 ## Ordering experience
 
@@ -20,3 +21,7 @@ Browse or search pizzas, filter and sort the menu, customize a pizza, and add it
 There is no backend or payment service configured in this repository. Bucket contents, orders, and contact-form submissions are saved in the current browser with local storage; orders are not transmitted to a restaurant and no payment or delivery is actually processed. Cash on delivery is the only checkout option. The tracking timeline advances deterministically from the locally saved order time.
 
 Menu data and coupon rules are centralized in `src/data/pizzas.js` and `src/utils/order.js`.
+
+## Codebase guide
+
+Evidence-based architecture, conventions, integrations, test coverage, and known limitations are documented in [`docs/codebase/`](./docs/codebase/).

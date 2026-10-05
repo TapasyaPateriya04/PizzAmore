@@ -270,7 +270,6 @@
   width: min(1160px, calc(100% - 64px));
   margin: 0 auto;
   padding: 60px 0 75px 6%;
-  animation: arrive .65s ease both;
 }
 
 .hero-kicker,
@@ -2771,29 +2770,43 @@ select:focus-visible {
 
   .header-inner {
     width: calc(100% - 28px);
-    gap: 9px;
+    justify-content: flex-start;
+    gap: 6px;
   }
 
   .brand {
-    gap: 7px;
+    min-width: 0;
+    gap: 6px;
+    flex: 0 1 auto;
   }
 
   .brand-mark {
-    width: 34px;
-    height: 34px;
-    font-size: 21px;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    font-size: 19px;
   }
 
   .brand-name {
-    font-size: 19px;
+    min-width: 0;
+    font-size: clamp(15px, 5vw, 18px);
   }
 
   .brand-name small {
     font-size: 6px;
+    letter-spacing: .1em;
+    white-space: nowrap;
   }
 
   .header-actions {
-    gap: 8px;
+    gap: 5px;
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  .header-search {
+    width: 30px;
+    flex: 0 0 30px;
   }
 
   .bucket-label {
@@ -2801,12 +2814,15 @@ select:focus-visible {
   }
 
   .bucket-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 
   .mobile-menu-toggle {
     order: 2;
+    width: 32px;
+    flex: 0 0 32px;
+    margin-left: 0;
   }
 
   .header-actions {
@@ -3196,4 +3212,518 @@ select:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
+}
+
+/* Keep everyday copy comfortably readable while preserving the existing type hierarchy. */
+.announcement {
+  font-size: 11px;
+}
+
+.main-nav a,
+.orders-link,
+.bucket-link {
+  font-size: 14px;
+}
+
+.header-search input {
+  font-size: 13px;
+}
+
+.eyebrow {
+  font-size: 11px;
+}
+
+.hero-content > p,
+.section-heading p,
+.page-intro p,
+.story-copy p,
+.about-feature p,
+.legal-copy p {
+  font-size: 15px;
+}
+
+.hero-kicker {
+  font-size: 11px;
+}
+
+.hero-note strong,
+.pizza-card-heading .rating {
+  font-size: 12px;
+}
+
+.hero-note small,
+.hero-secondary,
+.hero-caption,
+.benefits-strip small {
+  font-size: 11px;
+}
+
+.benefits-strip strong {
+  font-size: 13px;
+}
+
+.home-category-nav .eyebrow,
+.home-category-nav a,
+.pizza-card-bottom small,
+.pizza-badge {
+  font-size: 12px;
+}
+
+.pizza-card-heading h3 {
+  font-size: 21px;
+}
+
+.pizza-card-body > p {
+  font-size: 14px;
+}
+
+.pizza-card-bottom strong {
+  font-size: 17px;
+}
+
+.button {
+  font-size: 13px;
+}
+
+.button-small {
+  font-size: 12px;
+}
+
+.hero-secondary,
+.text-link,
+.text-button,
+.secure-note {
+  font-size: 13px;
+}
+
+.home-promo p {
+  font-size: 14px;
+}
+
+.brand-name small {
+  font-size: 9px;
+}
+
+.promo-stamp small,
+.timeline-marker,
+.estimated-arrival > span {
+  font-size: 11px;
+}
+
+.footer-brand > p,
+.footer-main > div:not(:first-child) a {
+  font-size: 13px;
+}
+
+.footer-main h2 {
+  font-size: 12px;
+}
+
+.footer-bottom {
+  font-size: 11px;
+}
+
+.menu-toolbar .category-tab,
+.sort-control,
+.sort-control select,
+.search-result-note,
+.empty-state p {
+  font-size: 13px;
+}
+
+.sort-control select {
+  font-size: 13px;
+}
+
+.empty-state h1,
+.empty-state h2 {
+  font-size: 34px;
+}
+
+.product-description {
+  font-size: 15px;
+}
+
+.ingredient-line strong,
+.option-group legend,
+.field-label,
+.form-field label,
+.tracking-search > label,
+.recent-orders > label {
+  font-size: 13px;
+}
+
+.ingredient-line p,
+.choice-button strong,
+.topping-option,
+.topping-option small,
+.field-label span,
+.form-field label span,
+.product-config textarea,
+.form-field input,
+.form-field textarea,
+.tracking-search input {
+  font-size: 12px;
+}
+
+.choice-button strong {
+  font-size: 12px;
+}
+
+.crust-choices .choice-button strong {
+  font-size: 11px;
+}
+
+.cart-item-info h2 {
+  font-size: 20px;
+}
+
+.cart-item-info > p,
+.item-note,
+.cart-item-price,
+.coupon-form label,
+.coupon-input-row input,
+.coupon-applied,
+.totals-list > div,
+.summary-item,
+.payment-choice strong,
+.checkout-terms,
+.field-error,
+.form-error,
+.form-success,
+.order-error,
+.order-card-top p,
+.track-result-heading p,
+.order-timeline li strong,
+.track-address,
+.inline-alert {
+  font-size: 12px;
+}
+
+.summary-card > h2,
+.form-section-heading h2,
+.confirmation-card > h2 {
+  font-size: 23px;
+}
+
+.summary-item small,
+.form-section-heading p,
+.payment-choice small,
+.summary-footnote,
+.address-summary small,
+.recent-orders select {
+  font-size: 11px;
+}
+
+.total-line dd {
+  font-size: 19px;
+}
+
+.tracking-search input,
+.recent-orders select {
+  font-size: 13px;
+}
+
+.order-card .eyebrow {
+  font-size: 10px;
+}
+
+.order-card-pizzas {
+  font-size: 13px;
+}
+
+.status-pill,
+.estimated-arrival > span,
+.estimated-arrival small,
+.order-timeline li p,
+.order-timeline li small {
+  font-size: 11px;
+}
+
+.estimated-arrival strong {
+  font-size: 31px;
+}
+
+.offer-card .eyebrow,
+.offer-card > small,
+.offer-code-row code,
+.contact-privacy-note {
+  font-size: 11px;
+}
+
+.offer-card p {
+  font-size: 14px;
+}
+
+.offer-card h2 {
+  font-size: 27px;
+}
+
+.value-grid p,
+.legal-copy p,
+.contact-aside p {
+  font-size: 13px;
+}
+
+.value-grid h3 {
+  font-size: 22px;
+}
+
+.contact-aside h2 {
+  font-size: 27px;
+}
+
+.toast-message {
+  font-size: 13px;
+}
+
+.pizza-card-image img {
+  transition: transform .55s cubic-bezier(.2, .7, .25, 1), filter .35s ease;
+}
+
+.pizza-card:hover .pizza-card-image img {
+  filter: saturate(1.08);
+}
+
+.offer-card,
+.value-grid article,
+.benefits-strip > div,
+.home-category-nav a {
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, color .22s ease;
+}
+
+.offer-card:hover,
+.value-grid article:hover {
+  transform: translateY(-3px);
+}
+
+.button {
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.button-primary:hover:not(:disabled) {
+  box-shadow: 0 7px 18px rgba(131, 57, 39, .2);
+}
+
+.quantity-control button:not(:disabled):hover {
+  background: #f8eee7;
+}
+
+.order-timeline li.current .timeline-marker {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+.toast-message {
+  animation: toast-in .28s cubic-bezier(.2, .7, .25, 1) both;
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(71, 107, 79, .2);
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px rgba(71, 107, 79, 0);
+  }
+}
+
+@media (max-width: 780px) {
+  .main-nav a,
+  .orders-link {
+    font-size: 14px;
+  }
+
+  .header-search input {
+    font-size: 14px;
+  }
+
+  .hero-content > p,
+  .section-heading p,
+  .page-intro p,
+  .story-copy p,
+  .about-feature p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 560px) {
+  .announcement {
+    font-size: 10px;
+  }
+
+  .benefits-strip strong {
+    font-size: 12px;
+  }
+
+  .benefits-strip small {
+    font-size: 10px;
+  }
+
+  .home-category-nav {
+    gap: 8px;
+  }
+
+  .home-category-nav .eyebrow {
+    font-size: 10px;
+  }
+
+  .home-category-nav a {
+    font-size: 12px;
+  }
+
+  .pizza-card-body > p {
+    font-size: 14px;
+  }
+
+  .cart-item-info h2 {
+    font-size: 17px;
+  }
+
+  .cart-item-info > p,
+  .item-note,
+  .cart-item-price {
+    font-size: 11px;
+  }
+
+  .summary-item,
+  .totals-list > div,
+  .form-field label,
+  .field-error,
+  .form-error,
+  .form-success {
+    font-size: 13px;
+  }
+
+  .summary-item small,
+  .checkout-terms,
+  .summary-footnote {
+    font-size: 11px;
+  }
+
+  .order-card-pizzas {
+    font-size: 12px;
+  }
+
+  .track-result .order-timeline li strong {
+    font-size: 10px;
+  }
+
+  .track-result .order-timeline li p,
+  .track-result .order-timeline li small {
+    font-size: 10px;
+  }
+
+  .brand-name small {
+    font-size: 8px;
+  }
+
+  .offer-card p {
+    font-size: 14px;
+  }
+
+  .footer-brand > p,
+  .footer-main > div:not(:first-child) a {
+    font-size: 12px;
+  }
+}
+
+/* Keep supporting copy and controls readable at every breakpoint. */
+body {
+  font-size: 16px;
+}
+
+.announcement,
+.eyebrow,
+.home-category-nav .eyebrow,
+.benefits-strip small,
+.summary-item small,
+.summary-footnote,
+.checkout-terms,
+.contact-privacy-note,
+.address-summary small,
+.offer-card > small {
+  font-size: 13px;
+}
+
+.brand-name small {
+  font-size: 10px;
+}
+
+@media (max-width: 560px) {
+  .brand-name small {
+    font-size: 6px;
+    letter-spacing: .1em;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-name small {
+    display: none;
+  }
+}
+
+.hero-content > p,
+.section-heading p,
+.page-intro p,
+.story-copy p,
+.about-feature p,
+.legal-copy p,
+.value-grid p,
+.contact-aside p,
+.offer-card p,
+.pizza-card-body > p,
+.product-description {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.main-nav a,
+.orders-link,
+.bucket-link,
+.header-search input,
+.home-category-nav a,
+.button,
+.form-field label,
+.field-label,
+.coupon-form label,
+.option-group legend,
+.topping-option,
+.choice-button,
+.cart-item-actions .text-button,
+.text-link,
+.summary-item,
+.totals-list > div,
+.cart-item-info > p,
+.cart-item-price,
+.field-error,
+.form-error,
+.form-success,
+.order-card-pizzas,
+.status-pill,
+.estimated-arrival > span,
+.estimated-arrival small,
+.order-timeline li p,
+.order-timeline li small,
+.payment-choice small,
+.track-result .order-timeline li strong,
+.track-result .order-timeline li p,
+.track-result .order-timeline li small,
+.order-card-bottom .text-link,
+.footer-brand > p,
+.footer-main > div:not(:first-child) a {
+  font-size: 14px;
+}
+
+.benefits-strip strong,
+.pizza-card-heading .rating,
+.cart-item-info h2 {
+  font-size: 16px;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
 }
