@@ -1,0 +1,127 @@
+import pizzaOne from '../assets/pizza1.jpg';
+import pizzaTwo from '../assets/pizza2.jpg';
+
+const photo = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1000&q=85`;
+
+export const pizzas = [
+  {
+    id: 'garden-margherita',
+    name: 'Garden Margherita',
+    category: 'Classics',
+    price: 329,
+    rating: 4.9,
+    reviews: 248,
+    badge: 'Bestseller',
+    image: pizzaOne,
+    description: 'A little black dress of pizzas: bright tomato, milky mozzarella and fragrant basil.',
+    ingredients: ['San Marzano tomato', 'Fresh mozzarella', 'Basil', 'Extra virgin olive oil'],
+  },
+  {
+    id: 'wild-mushroom',
+    name: 'Wild Mushroom',
+    category: 'Premium',
+    price: 429,
+    rating: 4.8,
+    reviews: 176,
+    badge: 'Fan favourite',
+    image: photo('photo-1579751626657-72bc17010498'),
+    description: 'Earthy roasted mushrooms, garlic cream, thyme and a generous blanket of cheese.',
+    ingredients: ['Roasted mushrooms', 'Garlic cream', 'Mozzarella', 'Thyme', 'Parmesan'],
+  },
+  {
+    id: 'paneer-tikka',
+    name: 'Paneer Tikka',
+    category: 'Spicy',
+    price: 399,
+    rating: 4.8,
+    reviews: 204,
+    badge: 'Local love',
+    image: pizzaTwo,
+    description: 'Tandoori-marinated paneer, crisp peppers and a cool mint drizzle.',
+    ingredients: ['Tandoori paneer', 'Red onion', 'Capsicum', 'Mozzarella', 'Mint yoghurt'],
+  },
+  {
+    id: 'mediterranean',
+    name: 'Mediterranean',
+    category: 'Veggie',
+    price: 379,
+    rating: 4.7,
+    reviews: 132,
+    badge: '',
+    image: photo('photo-1571407970349-bc81e7e96d47'),
+    description: 'A sunny mix of Kalamata olives, sweet tomatoes, roasted peppers and feta.',
+    ingredients: ['Kalamata olives', 'Cherry tomatoes', 'Roasted peppers', 'Feta', 'Oregano'],
+  },
+  {
+    id: 'four-cheese',
+    name: 'Four Cheese',
+    category: 'Cheese lovers',
+    price: 419,
+    rating: 4.9,
+    reviews: 189,
+    badge: 'Cheese pull',
+    image: photo('photo-1513104890138-7c749659a591'),
+    description: 'Mozzarella, smoked provolone, creamy ricotta and a little parmesan magic.',
+    ingredients: ['Mozzarella', 'Smoked provolone', 'Ricotta', 'Parmesan', 'Basil oil'],
+  },
+  {
+    id: 'corn-pesto',
+    name: 'Sweet Corn Pesto',
+    category: 'Veggie',
+    price: 349,
+    rating: 4.6,
+    reviews: 98,
+    badge: 'New',
+    image: photo('photo-1576458088443-04a19bb13da6'),
+    description: 'Golden sweetcorn meets basil pesto, juicy tomatoes and creamy mozzarella.',
+    ingredients: ['Sweetcorn', 'Basil pesto', 'Tomato', 'Mozzarella', 'Chilli flakes'],
+  },
+  {
+    id: 'fiery-jalapeno',
+    name: 'Fiery Jalapeño',
+    category: 'Spicy',
+    price: 369,
+    rating: 4.7,
+    reviews: 121,
+    badge: 'A little heat',
+    image: photo('photo-1571066811602-716837d681de'),
+    description: 'Jalapeños, pickled onions and a smoky chilli honey finish. Not shy.',
+    ingredients: ['Jalapeños', 'Pickled red onion', 'Smoked mozzarella', 'Chilli honey'],
+  },
+  {
+    id: 'truffle-delight',
+    name: 'Truffle Garden',
+    category: 'Premium',
+    price: 469,
+    rating: 4.9,
+    reviews: 87,
+    badge: 'Chef’s pick',
+    image: photo('photo-1593560708920-61dd98c46a4e'),
+    description: 'Wild mushrooms and caramelised onions, finished with a whisper of truffle.',
+    ingredients: ['Wild mushrooms', 'Caramelised onion', 'Mozzarella', 'Truffle oil', 'Rocket'],
+  },
+];
+
+export const sizes = [
+  { name: 'Small', adjustment: -60 },
+  { name: 'Regular', adjustment: 0 },
+  { name: 'Large', adjustment: 120 },
+];
+
+export const crusts = [
+  { name: 'Classic', adjustment: 0 },
+  { name: 'Thin & crispy', adjustment: 0 },
+  { name: 'Whole wheat', adjustment: 40 },
+  { name: 'Cheese burst', adjustment: 90 },
+];
+
+export const toppings = [
+  { name: 'Extra mozzarella', price: 45 },
+  { name: 'Roasted mushrooms', price: 35 },
+  { name: 'Kalamata olives', price: 30 },
+  { name: 'Jalapeños', price: 25 },
+  { name: 'Paneer', price: 50 },
+  { name: 'Sweetcorn', price: 25 },
+  { name: 'Roasted peppers', price: 25 },
+  { name: 'Red onion', price: 20 },
+];

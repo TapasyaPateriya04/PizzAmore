@@ -1,6 +1,8 @@
 import path from 'path';
+import react from '@vitejs/plugin-react';
 
 export default {
+  plugins: [react()],
   resolve: {
     alias: {
       // eslint-disable-next-line no-undef
@@ -11,9 +13,6 @@ export default {
       '@styles': path.resolve(__dirname, 'src/styles'),         // Alias @styles to src/styles
       // eslint-disable-next-line no-undef
       '@assets': path.resolve(__dirname, 'src/assets'),         // Alias @assets to src/assets
-    },
-    server: {
-      historyApiFallback: true,
     },
   },
   
